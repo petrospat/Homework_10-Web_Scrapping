@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Marsfinder</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
+    </div>
+
+    <div class="row" >
+      <div class="col-md-12">
+        <h2><b>Latest Mars News</b> </h2>
+        <h3 class="heading"><b>{{mars_data.Title}}</b></h3>
+        <h4>{{mars_data.Description}}</h4>
+      </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-12">
+            <div class="col-md-8">
+              <h2><b>Featured Mars Image</b> </h2>
+              <img src="{{ mars_data.Mars_Img }}" alt ="Mars" class="img-responsive">
+            </div>
+            
+            <div class="col-md-4 card">
+              <span class="border">  
+              <h2><b>Current Weather on Mars</b></h2>
+              <h5 small>{{mars_data.Weather}}</small h5>
+              </span>
+              <div class="row">
+                <h2><b>Mars Facts</b></h2>
+               
+                {{mars_data.Facts}}  
+              
+              </div>
+            </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-12 mx-auto">
+          <h2 align="center" ><b>Mars Hemispheres</b> </h2>
+            <div class="row justify-content-center" >
+              <div id="images" class ="portrait">
+              {% for img in mars_data.Hemispheres %}
+              <div class="col-md-5" >
+              <a target="_blank" href="">    
+              <img src="{{ img.img_url }}" alt ="Mars" class="img-responsive thumbnail"></a>
+              <h5 small><b>{{img.header}} </b></small h5></div>
+              {% endfor %}
+              </div>  
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
